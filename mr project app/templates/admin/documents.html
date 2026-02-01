@@ -1,0 +1,158 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Manage Documents - MR PROJECT{% endblock %}
+
+{% block admin_title %}Document Management{% endblock %}
+
+{% block admin_actions %}
+<button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#uploadDocumentModal">
+    <i class="fas fa-file-upload me-1"></i> Upload Document
+</button>
+{% endblock %}
+
+{% block admin_content %}
+<!-- Client Uploaded Documents -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0 text-light">Client Uploaded Documents</h5>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Client</th>
+                        <th>Document</th>
+                        <th>Description</th>
+                        <th>Upload Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in client_uploads %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <a href="{{ url_for('admin_view_client', client_id=document.user.id) }}">
+                                {{ document.user.name }}
+                            </a>
+                        </td>
+                        <td>{{ document.filename }}</td>
+                        <td title="{{ document.description }}">{{ document.description|truncate(30) }}</td>
+                        <td>{{ document.uploaded_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <a href="{{ url_for('download_document', document_id=document.id) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">No client uploaded documents available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Uploaded Documents -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0 text-light">Documents Uploaded by Admin</h5>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>For Client</th>
+                        <th>Document</th>
+                        <th>Description</th>
+                        <th>Upload Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in admin_uploads %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <a href="{{ url_for('admin_view_client', client_id=document.user.id) }}">
+                                {{ document.user.name }}
+                            </a>
+                        </td>
+                        <td>{{ document.filename }}</td>
+                        <td title="{{ document.description }}">{{ document.description|truncate(30) }}</td>
+                        <td>{{ document.uploaded_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <a href="{{ url_for('download_document', document_id=document.id) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">No admin uploaded documents available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Upload Document Modal -->
+<div class="modal fade" id="uploadDocumentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Document for Client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{{ url_for('admin_documents') }}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        {{ form.client.label(class="form-label") }}
+                        {{ form.client(class="form-select") }}
+                        <div class="form-text">Select a client to upload the document for.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.file.label(class="form-label") }}
+                        {{ form.file(class="form-control") }}
+                        <div class="form-text">Allowed file types: .doc, .docx, .pdf, .txt, .xlsx, .pptx, .zip</div>
+                        {% if form.file.errors %}
+                            <div class="text-danger">
+                                {% for error in form.file.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control", rows=4) }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">
+                                {% for error in form.description.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

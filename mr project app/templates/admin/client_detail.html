@@ -1,0 +1,272 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Client Details - MR PROJECT{% endblock %}
+
+{% block admin_title %}Client Details: {{ client.name }}{% endblock %}
+
+{% block admin_actions %}
+<a href="{{ url_for('admin_clients') }}" class="btn btn-sm btn-outline-secondary">
+    <i class="fas fa-arrow-left me-1"></i> Back to Clients
+</a>
+<button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClientModal">
+    <i class="fas fa-trash me-1"></i> Delete Client
+</button>
+{% endblock %}
+
+{% block admin_content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <!-- Client Information -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Client Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <div class="avatar-circle mx-auto" style="width: 100px; height: 100px;">
+                        <span class="initials" style="font-size: 2.5rem;">{{ client.name[0] }}</span>
+                    </div>
+                    <h4 class="mt-3">{{ client.name }}</h4>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Email</label>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-envelope text-primary me-2"></i>
+                        <a href="mailto:{{ client.email }}">{{ client.email }}</a>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Phone</label>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone text-primary me-2"></i>
+                        <a href="tel:{{ client.phone }}">{{ client.phone }}</a>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Registration Date</label>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-calendar-alt text-primary me-2"></i>
+                        <span>{{ client.created_at.strftime('%B %d, %Y') }}</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Approval Code</label>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-key text-primary me-2"></i>
+                        <code>{{ client.approval_code }}</code>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-muted">Topic Title</label>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-book text-primary me-2"></i>
+                        <span>{{ client.topic_title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <!-- Documents -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Client Documents</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Filename</th>
+                                <th>Description</th>
+                                <th>Uploaded</th>
+                                <th>Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for document in documents %}
+                            <tr>
+                                <td>{{ document.filename }}</td>
+                                <td title="{{ document.description }}">{{ document.description|truncate(30) }}</td>
+                                <td>{{ document.uploaded_at.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    {% if document.is_admin_upload %}
+                                        <span class="badge bg-primary">Admin Upload</span>
+                                    {% else %}
+                                        <span class="badge bg-info">Client Upload</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('download_document', document_id=document.id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center">No documents available</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Messages -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Recent Messages</h5>
+            </div>
+            <div class="card-body">
+                <div class="message-container">
+                    {% for message in messages %}
+                        <div class="message {% if message.sender_id == current_user.id %}message-sent{% else %}message-received{% endif %}">
+                            <div class="message-content">
+                                {% if message.audio_path %}
+                                    <audio controls src="{{ url_for('uploaded_file', filename=message.audio_path) }}"></audio>
+                                {% elif message.content and message.content.startswith('[VOICE]:') %}
+                                    {% set filename = message.content.split(':',1)[1] %}
+                                    <audio controls src="{{ url_for('uploaded_file', filename=filename) }}"></audio>
+                                {% else %}
+                                    {{ message.content }}
+                                {% endif %}
+                            </div>
+                            <div class="message-meta">
+                                {{ message.created_at.strftime('%Y-%m-%d %H:%M') }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="text-center text-muted">
+                            <i class="fas fa-comments fa-3x mb-2"></i>
+                            <p>No messages exchanged yet.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Send Message Form -->
+                <form action="{{ url_for('admin_send_message', client_id=client.id) }}" method="POST" class="mt-3" enctype="multipart/form-data" id="replyForm">
+                    {{ message_form.hidden_tag() }}
+                    <div class="input-group">
+                        {{ message_form.content(class="form-control", placeholder="Type a message...") }}
+                        <button type="button" class="btn btn-outline-secondary" id="recordBtn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger d-none" id="stopBtn">
+                            <i class="fas fa-stop"></i>
+                        </button>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <small id="voiceStatus" class="form-text text-muted"></small>
+                    <audio id="lastPlayback" controls style="display:none; margin-top:8px; width:100%;"></audio>
+                </form>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{{ url_for('admin_messages') }}" class="text-decoration-none">View All Messages <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Client Modal -->
+<div class="modal fade" id="deleteClientModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the client <strong>{{ client.name }}</strong>?</p>
+                <p class="text-danger"><strong>Warning:</strong> This action cannot be undone. All client documents and messages will also be deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ url_for('admin_delete_client', client_id=client.id) }}" method="POST">
+                    {{ delete_form.hidden_tag() }}
+                    <button type="submit" class="btn btn-danger">Delete Client</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const recordBtn = document.getElementById("recordBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const status = document.getElementById("voiceStatus");
+    const playback = document.getElementById("lastPlayback");
+
+    let mediaRecorder;
+    let chunks = [];
+
+    recordBtn.addEventListener("click", async function () {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            chunks = [];
+
+            mediaRecorder.ondataavailable = e => chunks.push(e.data);
+
+            mediaRecorder.onstart = () => {
+                recordBtn.classList.add("d-none");
+                stopBtn.classList.remove("d-none");
+                status.textContent = "Recording...";
+            };
+
+            mediaRecorder.onstop = async () => {
+                stopBtn.classList.add("d-none");
+                recordBtn.classList.remove("d-none");
+                status.textContent = "Uploading...";
+
+                const blob = new Blob(chunks, { type: "audio/webm" });
+                playback.src = URL.createObjectURL(blob);
+                playback.style.display = "block";
+
+                const fd = new FormData();
+                fd.append("voice", blob, "voice_note.webm");
+                fd.append("recipient_id", "{{ client.id }}");
+
+                try {
+                    const res = await fetch("{{ url_for('upload_voice') }}", {
+                        method: "POST",
+                        body: fd
+                    });
+                    const data = await res.json();
+                    if (res.ok) {
+                        status.textContent = "Voice note sent!";
+                        setTimeout(() => location.reload(), 800);
+                    } else {
+                        status.textContent = data.error || "Upload failed.";
+                    }
+                } catch (err) {
+                    console.error("Upload error:", err);
+                    status.textContent = "Error uploading voice note.";
+                }
+            };
+
+            mediaRecorder.start();
+        } catch (err) {
+            alert("Microphone access denied.");
+            console.error(err);
+        }
+    });
+
+    stopBtn.addEventListener("click", function () {
+        if (mediaRecorder && mediaRecorder.state === "recording") {
+            mediaRecorder.stop();
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Account Restricted - MR PROJECT{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-danger">
+                <div class="card-body p-5">
+                    <!-- Warning Icon -->
+                    <div class="mb-4">
+                        <i class="fas fa-exclamation-triangle text-danger" style="font-size: 5rem;"></i>
+                    </div>
+                    
+                    <!-- Heading -->
+                    <h1 class="display-5 text-danger mb-3">Account Restricted</h1>
+                    <h3 class="mb-4 text-muted">Access Temporarily Suspended</h3>
+                    
+                    <!-- Message -->
+                    <div class="alert alert-danger" role="alert">
+                        <p class="mb-3">
+                            <strong>Dear {{ current_user.name }},</strong>
+                        </p>
+                        <p class="mb-3">
+                            Your account has been temporarily restricted and you currently do not have access to the dashboard and services.
+                        </p>
+                        <p class="mb-0">
+                            This restriction may be due to:
+                        </p>
+                    </div>
+                    
+                    <!-- Reasons List -->
+                    <div class="text-start mt-4 mb-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-circle text-danger me-2" style="font-size: 0.5rem;"></i>
+                                Pending payment verification
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-circle text-danger me-2" style="font-size: 0.5rem;"></i>
+                                Outstanding balance or payment issues
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-circle text-danger me-2" style="font-size: 0.5rem;"></i>
+                                Violation of terms and conditions
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-circle text-danger me-2" style="font-size: 0.5rem;"></i>
+                                Account verification required
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="card bg-dark border-primary mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary mb-3">
+                                <i class="fas fa-headset me-2"></i>Need Help?
+                            </h5>
+                            <p class="card-text mb-3">
+                                To resolve this issue and restore your account access, please contact our support team:
+                            </p>
+                            
+                            <!-- Contact Methods -->
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="rounded-circle bg-success p-3 me-3">
+                                            <i class="fab fa-whatsapp fa-lg text-white"></i>
+                                        </div>
+                                        <div class="text-start">
+                                            <small class="text-muted d-block">WhatsApp</small>
+                                            <a href="https://wa.me/2348026612882" target="_blank" class="text-white text-decoration-none fw-bold">
+                                                +234 802 661 2882
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="rounded-circle bg-primary p-3 me-3">
+                                            <i class="fas fa-envelope fa-lg text-white"></i>
+                                        </div>
+                                        <div class="text-start">
+                                            <small class="text-muted d-block">Email</small>
+                                            <a href="mailto:mrprojectwriting@gmail.com" class="text-white text-decoration-none fw-bold">
+                                                Support Email
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Info -->
+                    <div class="mt-4 text-muted">
+                        <small>
+                            <i class="fas fa-info-circle me-1"></i>
+                            Please reference your account email ({{ current_user.email }}) when contacting support.
+                        </small>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div class="mt-5">
+                        <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-sign-out-alt me-2"></i>Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support Hours Notice -->
+            <div class="alert alert-info mt-4" role="alert">
+                <i class="fas fa-clock me-2"></i>
+                <strong>Support Hours:</strong> We typically respond within 24 hours during business days.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
