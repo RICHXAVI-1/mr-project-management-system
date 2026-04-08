@@ -1,0 +1,1174 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Mr Project</title>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/brand/favicon.ico') }}">
+	<link rel="icon" type="image/png" sizes="64x64"
+		href="{{ url_for('static', filename='images/brand/favicon-64.png') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/brand/favicon.ico') }}">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/linearicons.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootsnav.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/firstpage_inline.css') }}">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
+
+	<!-- JavaScript (jQuery first, then plugins) -->
+	<script src="{{ url_for('static', filename='java/jquery.js') }}"></script>
+	<script src="{{ url_for('static', filename='java/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='java/bootsnav.js') }}"></script>
+	<script src="{{ url_for('static', filename='java/owl.carousel.min.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<script src="{{ url_for('static', filename='java/custom.js') }}"></script>
+
+	<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+        Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+
+	<!-- ==================== HERO / NAVIGATION ==================== -->
+	<section id="home" class="welcome-hero">
+
+		<div class="top-area">
+			<div class="header-area">
+				<div class="wrap-sticky">
+
+					<nav class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
+						data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+						<div class="container">
+
+							<!-- Brand -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse"
+									data-target="#navbar-menu">
+									<i class="fa fa-bars"></i>
+								</button>
+								<a class="navbar-brand mrp-brand" href="#home">
+									<img src="{{ url_for('static', filename='images/brand/Mrproject_logo.png') }}"
+										alt="Mr Project Logo" class="mrp-logo-img">
+									<span>
+										<span class="mrp-brand-text">Mr. Project</span>
+										<span class="mrp-brand-sub">Academic &amp; Professional Services</span>
+									</span>
+								</a>
+							</div>
+
+							<!-- Nav links -->
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+								<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+									<li class="scroll active"><a href="#home">Home</a></li>
+									<li class="scroll"><a href="#service">Services</a></li>
+									<li class="scroll"><a href="#pricing">Pricing</a></li>
+									<li class="scroll"><a href="#news-update">About</a></li>
+									<li class="scroll"><a href="#reviews">Reviews</a></li>
+									<li class="scroll"><a href="#contact">Contact</a></li>
+									<li><a href="{{ url_for('index') }}" class="mrp-cta">Get Started <i
+												class="fa fa-arrow-right"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</nav>
+
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+		<!-- Hero text -->
+		<div class="container">
+			<div class="welcome-hero-txt">
+				<h2>Transform your academic journey</h2>
+				<p>
+					An organization dedicated to providing students, researchers, and professionals with expert support
+					in academic writing, data analysis, data visualization, and web development to help them achieve
+					exceptional results.
+				</p>
+				<button class="welcome-btn" onclick="window.location.href='/index'">get started</button>
+			</div>
+		</div>
+
+	</section>
+	<!-- ==================== END HERO ==================== -->
+
+
+	<!-- ==================== SERVICES ==================== -->
+	<section id="service" class="sv-section" aria-label="Our Services">
+
+		<div class="sv-header sv-reveal">
+			<span class="sv-badge">What We Do</span>
+			<h2>Our <span>Services</span></h2>
+			<p>Expert academic, professional, and technical support — delivered on time, every time.</p>
+		</div>
+
+		<!-- Filter buttons -->
+		<div class="sv-filters sv-reveal" style="transition-delay:0.07s">
+			<button class="sv-filter-btn sv-active" data-filter="all">All Services</button>
+			<button class="sv-filter-btn" data-filter="writing">Writing &amp; Applications</button>
+			<button class="sv-filter-btn" data-filter="academic">Academic</button>
+			<button class="sv-filter-btn" data-filter="data">Data Services</button>
+			<button class="sv-filter-btn" data-filter="tech">Tech &amp; Other</button>
+		</div>
+
+		<div class="sv-grid" id="sv-grid">
+
+			<!-- Personal Statements -->
+			<div class="sv-cat-card sv-reveal" data-category="writing" style="transition-delay:0.05s">
+				<div class="sv-cat-icon"><i class="fa fa-id-card-o"></i></div>
+				<h3 class="sv-cat-title">Personal Statements</h3>
+				<ul class="sv-item-list">
+					<li>Undergraduate / UCAS Personal Statement</li>
+					<li>Postgraduate / Masters Personal Statement</li>
+					<li>PhD / Doctoral Personal Statement</li>
+					<li>Oxbridge / Russell Group Applications</li>
+					<li>Medicine, Law &amp; Dentistry Applications</li>
+					<li>Scholarship Applications</li>
+					<li>Student, Work &amp; Skilled Worker Visa Statements</li>
+					<li>Job Application Statements (Entry to C-Suite)</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- CV & Cover Letter -->
+			<div class="sv-cat-card sv-reveal" data-category="writing" style="transition-delay:0.12s">
+				<div class="sv-cat-icon"><i class="fa fa-file-text-o"></i></div>
+				<h3 class="sv-cat-title">CV &amp; Cover Letter</h3>
+				<ul class="sv-item-list">
+					<li>Student / Graduate CV</li>
+					<li>Professional CV (Mid-Level)</li>
+					<li>Senior / Executive CV</li>
+					<li>Academic / Research CV</li>
+					<li>Cover Letter Writing</li>
+					<li>LinkedIn Profile Rewrite</li>
+					<li>CV + Cover Letter Bundle (15% off)</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Thesis & Dissertation -->
+			<div class="sv-cat-card sv-reveal" data-category="academic" style="transition-delay:0.19s">
+				<div class="sv-cat-icon"><i class="fa fa-graduation-cap"></i></div>
+				<h3 class="sv-cat-title">Thesis &amp; Dissertation</h3>
+				<ul class="sv-item-list">
+					<li>Undergraduate Thesis / Final Year Project</li>
+					<li>Master&rsquo;s Thesis / Dissertation</li>
+					<li>PhD Dissertation Chapter</li>
+					<li>Research Proposal</li>
+					<li>Literature Review</li>
+					<li>SIWES / IT Industrial Report</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Essays & Assignments -->
+			<div class="sv-cat-card sv-reveal" data-category="academic" style="transition-delay:0.26s">
+				<div class="sv-cat-icon"><i class="fa fa-pencil-square-o"></i></div>
+				<h3 class="sv-cat-title">Essays &amp; Assignments</h3>
+				<ul class="sv-item-list">
+					<li>Short Essay (up to 1,500 words)</li>
+					<li>Standard Assignment (1,500–3,000 words)</li>
+					<li>Extended Assignment (3,000–5,000 words)</li>
+					<li>Case Study / Academic Report</li>
+					<li>Proofreading &amp; Editing ($9 per 1,000 words)</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Data Analysis -->
+			<div class="sv-cat-card sv-reveal" data-category="data" style="transition-delay:0.33s">
+				<div class="sv-cat-icon"><i class="fa fa-bar-chart"></i></div>
+				<h3 class="sv-cat-title">Data Analysis</h3>
+				<ul class="sv-item-list">
+					<li>Basic Statistical Analysis (SPSS / Excel)</li>
+					<li>Advanced Analysis (R / Python)</li>
+					<li>Qualitative Analysis (NVivo / Thematic)</li>
+					<li>Survey Design &amp; Analysis</li>
+					<li>Regression / Econometric Modelling</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Data Visualization -->
+			<div class="sv-cat-card sv-reveal" data-category="data" style="transition-delay:0.40s">
+				<div class="sv-cat-icon"><i class="fa fa-line-chart"></i></div>
+				<h3 class="sv-cat-title">Data Visualization</h3>
+				<ul class="sv-item-list">
+					<li>Charts &amp; Graphs (Excel / Google Sheets)</li>
+					<li>Interactive Dashboard (Power BI / Tableau)</li>
+					<li>Python / R Plots (Matplotlib, ggplot)</li>
+					<li>Infographic Design</li>
+					<li>Full Report with Visualizations</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Web Development -->
+			<div class="sv-cat-card sv-reveal" data-category="tech" style="transition-delay:0.47s">
+				<div class="sv-cat-icon"><i class="fa fa-code"></i></div>
+				<h3 class="sv-cat-title">Web Development</h3>
+				<ul class="sv-item-list">
+					<li>Landing Page / Single-Page Site</li>
+					<li>Multi-Page Website (up to 5 pages)</li>
+					<li>Web App (database + authentication)</li>
+					<li>Bug Fixing &amp; Code Review</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Presentations & Proposals -->
+			<div class="sv-cat-card sv-reveal" data-category="tech" style="transition-delay:0.54s">
+				<div class="sv-cat-icon"><i class="fa fa-desktop"></i></div>
+				<h3 class="sv-cat-title">Presentations &amp; Proposals</h3>
+				<ul class="sv-item-list">
+					<li>PowerPoint Presentation (up to 15 slides)</li>
+					<li>Business Proposal / Report</li>
+					<li>Grant / Funding Application</li>
+					<li>Technical Report Writing</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+			<!-- Add-Ons & Extras -->
+			<div class="sv-cat-card sv-reveal" data-category="writing" style="transition-delay:0.61s">
+				<div class="sv-cat-icon"><i class="fa fa-plus-circle"></i></div>
+				<h3 class="sv-cat-title">Add-Ons &amp; Extras</h3>
+				<ul class="sv-item-list">
+					<li>Extra Revision Round</li>
+					<li>2nd Statement — Same Client (25% off)</li>
+					<li>Plagiarism Report</li>
+					<li>Turnitin Report</li>
+					<li>Proofreading / Editing Only</li>
+					<li>British English formatting</li>
+					<li>PDF + Word delivery on all orders</li>
+				</ul>
+				<a href="#pricing" class="sv-cat-link">View Pricing <i class="fa fa-arrow-right"></i></a>
+			</div>
+
+		</div>
+
+	</section>
+	<!-- ==================== END SERVICES ==================== -->
+
+
+	<!-- ==================== PRICING ==================== -->
+	<section id="pricing" class="pricing-wrap">
+		<div class="container">
+
+			<div class="pricing-header">
+				<span class="pricing-badge">Professional Writing &amp; Research Services</span>
+				<h2>Our Service <span>Pricing</span></h2>
+				<p>Tailored, expertly delivered work — on time, every time. Prices in USD.</p>
+			</div>
+
+			<!-- Tab buttons -->
+			<div class="pricing-tabs">
+				<button class="p-tab-btn active" onclick="showPTab('personal',this)">Personal Statement</button>
+				<button class="p-tab-btn" onclick="showPTab('cv',this)">CV &amp; Cover Letter</button>
+				<button class="p-tab-btn" onclick="showPTab('academic',this)">Academic Writing</button>
+				<button class="p-tab-btn" onclick="showPTab('data',this)">Data Services</button>
+				<button class="p-tab-btn" onclick="showPTab('other',this)">Other Services</button>
+				<button class="p-tab-btn" onclick="showPTab('addons',this)">Add-Ons &amp; Info</button>
+			</div>
+
+			<!-- Personal Statement -->
+			<div class="p-tab-content active" id="ptab-personal">
+
+				<div class="p-cat-label">Academic Applications</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Undergraduate / UCAS</td>
+								<td class="ps">$23</td>
+								<td class="pe">$33</td>
+								<td class="pu">$42</td>
+							</tr>
+							<tr>
+								<td>Postgraduate / Masters</td>
+								<td class="ps">$33</td>
+								<td class="pe">$42</td>
+								<td class="pu">$56</td>
+							</tr>
+							<tr>
+								<td>PhD / Doctoral</td>
+								<td class="ps">$47</td>
+								<td class="pe">$61</td>
+								<td class="pu">$75</td>
+							</tr>
+							<tr>
+								<td>Oxbridge / Russell Group</td>
+								<td class="ps">$56</td>
+								<td class="pe">$70</td>
+								<td class="pu">$89</td>
+							</tr>
+							<tr>
+								<td>Medicine / Law / Dentistry</td>
+								<td class="ps">$61</td>
+								<td class="pe">$75</td>
+								<td class="pu">$94</td>
+							</tr>
+							<tr>
+								<td>Scholarship Application</td>
+								<td class="ps">$38</td>
+								<td class="pe">$52</td>
+								<td class="pu">$66</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Professional / Job Applications</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Entry-Level Role</td>
+								<td class="ps">$19</td>
+								<td class="pe">$28</td>
+								<td class="pu">$38</td>
+							</tr>
+							<tr>
+								<td>Mid-Level / Managerial</td>
+								<td class="ps">$33</td>
+								<td class="pe">$45</td>
+								<td class="pu">$56</td>
+							</tr>
+							<tr>
+								<td>Senior / Director Level</td>
+								<td class="ps">$52</td>
+								<td class="pe">$66</td>
+								<td class="pu">$84</td>
+							</tr>
+							<tr>
+								<td>Executive / C-Suite</td>
+								<td class="ps">$70</td>
+								<td class="pe">$89</td>
+								<td class="pu">$112</td>
+							</tr>
+							<tr>
+								<td>Civil Service Application</td>
+								<td class="ps">$38</td>
+								<td class="pe">$52</td>
+								<td class="pu">$66</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Visa &amp; Immigration Statements</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Student Visa Statement</td>
+								<td class="ps">$28</td>
+								<td class="pe">$39</td>
+								<td class="pu">$52</td>
+							</tr>
+							<tr>
+								<td>Work Visa Statement</td>
+								<td class="ps">$33</td>
+								<td class="pe">$45</td>
+								<td class="pu">$56</td>
+							</tr>
+							<tr>
+								<td>Skilled Worker / ILR</td>
+								<td class="ps">$42</td>
+								<td class="pe">$56</td>
+								<td class="pu">$70</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- CV & Cover Letter -->
+			<div class="p-tab-content" id="ptab-cv">
+
+				<div class="p-cat-label">CV / Resume Writing</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Student / Graduate CV</td>
+								<td class="ps">$19</td>
+								<td class="pe">$28</td>
+								<td class="pu">$38</td>
+							</tr>
+							<tr>
+								<td>Professional CV (Mid-Level)</td>
+								<td class="ps">$28</td>
+								<td class="pe">$38</td>
+								<td class="pu">$52</td>
+							</tr>
+							<tr>
+								<td>Senior / Executive CV</td>
+								<td class="ps">$42</td>
+								<td class="pe">$56</td>
+								<td class="pu">$70</td>
+							</tr>
+							<tr>
+								<td>Academic / Research CV</td>
+								<td class="ps">$33</td>
+								<td class="pe">$45</td>
+								<td class="pu">$59</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Cover Letter &amp; LinkedIn</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Service</th>
+								<th colspan="3" style="text-align:center;">Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Cover Letter Writing</td>
+								<td colspan="3" class="pf" style="text-align:center;">$14 flat rate</td>
+							</tr>
+							<tr>
+								<td>LinkedIn Profile Rewrite</td>
+								<td colspan="3" class="pf" style="text-align:center;">$17 flat rate</td>
+							</tr>
+							<tr>
+								<td>CV + Cover Letter Bundle</td>
+								<td colspan="3" class="pd" style="text-align:center;">15% discount applied</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- Academic Writing -->
+			<div class="p-tab-content" id="ptab-academic">
+
+				<div class="p-cat-label">Thesis &amp; Dissertation</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Undergraduate Thesis / Final Year Project</td>
+								<td class="ps">$100</td>
+								<td class="pe">$125</td>
+								<td class="pu">$150</td>
+							</tr>
+							<tr>
+								<td>Master's Thesis / Dissertation</td>
+								<td class="ps">$150</td>
+								<td class="pe">$175</td>
+								<td class="pu">$200</td>
+							</tr>
+							<tr>
+								<td>PhD Dissertation Chapter</td>
+								<td class="ps">$200</td>
+								<td class="pe">$240</td>
+								<td class="pu">$280</td>
+							</tr>
+							<tr>
+								<td>Research Proposal</td>
+								<td class="ps">$70</td>
+								<td class="pe">$100</td>
+								<td class="pu">$120</td>
+							</tr>
+							<tr>
+								<td>Literature Review</td>
+								<td class="ps">$70</td>
+								<td class="pe">$100</td>
+								<td class="pu">$120</td>
+							</tr>
+							<tr>
+								<td>SIWES / IT Industrial Report</td>
+								<td class="ps">$50</td>
+								<td class="pe">$60</td>
+								<td class="pu">$80</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Essays &amp; Assignments</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard</th>
+								<th>Express</th>
+								<th>Urgent</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Short Essay (up to 1,500 words)</td>
+								<td class="ps">$15</td>
+								<td class="pe">$22</td>
+								<td class="pu">$30</td>
+							</tr>
+							<tr>
+								<td>Standard Assignment (1,500–3,000 words)</td>
+								<td class="ps">$25</td>
+								<td class="pe">$35</td>
+								<td class="pu">$48</td>
+							</tr>
+							<tr>
+								<td>Extended Assignment (3,000–5,000 words)</td>
+								<td class="ps">$40</td>
+								<td class="pe">$55</td>
+								<td class="pu">$72</td>
+							</tr>
+							<tr>
+								<td>Case Study / Academic Report</td>
+								<td class="ps">$32</td>
+								<td class="pe">$44</td>
+								<td class="pu">$58</td>
+							</tr>
+							<tr>
+								<td>Proofreading / Editing Only</td>
+								<td colspan="3" class="pf" style="text-align:center;">$9 per 1,000 words</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- Data Services -->
+			<div class="p-tab-content" id="ptab-data">
+
+				<div class="p-cat-label">Data Analysis</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard (5–7 Days)</th>
+								<th>Express (2–3 Days)</th>
+								<th>Urgent (24 hrs)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Basic Statistical Analysis (SPSS / Excel)</td>
+								<td class="ps">$35</td>
+								<td class="pe">$50</td>
+								<td class="pu">$70</td>
+							</tr>
+							<tr>
+								<td>Advanced Analysis (R / Python)</td>
+								<td class="ps">$60</td>
+								<td class="pe">$80</td>
+								<td class="pu">$110</td>
+							</tr>
+							<tr>
+								<td>Qualitative Analysis (NVivo / Thematic)</td>
+								<td class="ps">$50</td>
+								<td class="pe">$68</td>
+								<td class="pu">$90</td>
+							</tr>
+							<tr>
+								<td>Survey Design &amp; Analysis</td>
+								<td class="ps">$40</td>
+								<td class="pe">$55</td>
+								<td class="pu">$75</td>
+							</tr>
+							<tr>
+								<td>Regression / Econometric Modelling</td>
+								<td class="ps">$65</td>
+								<td class="pe">$85</td>
+								<td class="pu">$115</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Data Visualization</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard</th>
+								<th>Express</th>
+								<th>Urgent</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Charts &amp; Graphs (Excel / Google Sheets)</td>
+								<td class="ps">$20</td>
+								<td class="pe">$30</td>
+								<td class="pu">$42</td>
+							</tr>
+							<tr>
+								<td>Interactive Dashboard (Power BI / Tableau)</td>
+								<td class="ps">$55</td>
+								<td class="pe">$72</td>
+								<td class="pu">$95</td>
+							</tr>
+							<tr>
+								<td>Python / R Plots (Matplotlib, ggplot)</td>
+								<td class="ps">$40</td>
+								<td class="pe">$55</td>
+								<td class="pu">$72</td>
+							</tr>
+							<tr>
+								<td>Infographic Design</td>
+								<td class="ps">$35</td>
+								<td class="pe">$48</td>
+								<td class="pu">$65</td>
+							</tr>
+							<tr>
+								<td>Full Report with Visualizations</td>
+								<td class="ps">$75</td>
+								<td class="pe">$100</td>
+								<td class="pu">$135</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- Other Services -->
+			<div class="p-tab-content" id="ptab-other">
+
+				<div class="p-cat-label">Web Development</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard</th>
+								<th>Express</th>
+								<th>Urgent</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Landing Page / Single-Page Site</td>
+								<td class="ps">$60</td>
+								<td class="pe">$80</td>
+								<td class="pu">$110</td>
+							</tr>
+							<tr>
+								<td>Multi-Page Website (up to 5 pages)</td>
+								<td class="ps">$120</td>
+								<td class="pe">$155</td>
+								<td class="pu">$200</td>
+							</tr>
+							<tr>
+								<td>Web App (database + authentication)</td>
+								<td class="ps">$180</td>
+								<td class="pe">$230</td>
+								<td class="pu">$300</td>
+							</tr>
+							<tr>
+								<td>Bug Fixing / Code Review</td>
+								<td colspan="3" class="pf" style="text-align:center;">From $20 — quote-based</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="p-cat-label">Presentations &amp; Proposals</div>
+				<div class="p-table-wrap">
+					<table class="p-table">
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Standard</th>
+								<th>Express</th>
+								<th>Urgent</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>PowerPoint Presentation (up to 15 slides)</td>
+								<td class="ps">$25</td>
+								<td class="pe">$35</td>
+								<td class="pu">$48</td>
+							</tr>
+							<tr>
+								<td>Business Proposal / Report</td>
+								<td class="ps">$45</td>
+								<td class="pe">$60</td>
+								<td class="pu">$80</td>
+							</tr>
+							<tr>
+								<td>Grant / Funding Application</td>
+								<td class="ps">$55</td>
+								<td class="pe">$72</td>
+								<td class="pu">$95</td>
+							</tr>
+							<tr>
+								<td>Technical Report Writing</td>
+								<td class="ps">$40</td>
+								<td class="pe">$55</td>
+								<td class="pu">$72</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- Add-Ons & Info -->
+			<div class="p-tab-content" id="ptab-addons">
+
+				<div class="p-cat-label">Add-On Services</div>
+				<div class="addon-grid">
+					<div class="addon-card"><span class="an">CV / Resume Writing</span><span class="ap">$19</span></div>
+					<div class="addon-card"><span class="an">Cover Letter</span><span class="ap">$14</span></div>
+					<div class="addon-card"><span class="an">LinkedIn Profile Rewrite</span><span class="ap">$17</span>
+					</div>
+					<div class="addon-card"><span class="an">Extra Revision Round</span><span class="ap">$8</span></div>
+					<div class="addon-card"><span class="an">2nd Statement (same client)</span><span class="ap disc">25%
+							OFF</span></div>
+					<div class="addon-card"><span class="an">Proofreading / Editing Only</span><span
+							class="ap">$9</span></div>
+					<div class="addon-card"><span class="an">Plagiarism Report</span><span class="ap">$5</span></div>
+					<div class="addon-card"><span class="an">Turnitin Report</span><span class="ap">$8</span></div>
+				</div>
+
+				<div class="p-box gold-left">
+					<h4>Every Package Includes</h4>
+					<ul>
+						<li>Detailed client questionnaire</li>
+						<li>100% original, tailored content</li>
+						<li>British English spelling &amp; format</li>
+						<li>Two rounds of free revisions</li>
+						<li>Delivered as PDF + Word doc</li>
+						<li>Strict confidentiality guaranteed</li>
+					</ul>
+				</div>
+
+				<div class="p-box green-left">
+					<h4>Payment Terms</h4>
+					<ul>
+						<li>50% deposit required before work begins</li>
+						<li>50% balance due on final delivery</li>
+						<li>Payment via bank transfer</li>
+						<li>Pound Sterling (£) pricing available on request</li>
+					</ul>
+				</div>
+
+				<p class="pricing-note">
+					Prices are in <strong>US Dollars (USD)</strong>. All work written from scratch — never resold or
+					reused.<br>
+					Rush orders subject to availability. For bulk or corporate packages, <strong>discounts are
+						available</strong>
+					— <a href="#contact">contact us</a> to discuss.
+				</p>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- ==================== END PRICING ==================== -->
+
+
+	<!-- ==================== ABOUT ==================== -->
+	<section id="news-update" class="ab-section" aria-label="About Mr. Project">
+		<div class="ab-inner">
+
+			<!-- Image side -->
+			<div class="ab-img-wrap ab-reveal-left">
+				<img id="ab-main-img" src="{{ url_for('static', filename='images/new-cars-model/graduates-1.jpg') }}"
+					alt="About Mr. Project" class="ab-img-main">
+				<div class="ab-stat-badge">
+					<span class="ab-stat-num">500+</span>
+					<span class="ab-stat-label">Happy Clients</span>
+				</div>
+				<div class="ab-thumbs">
+					<img src="{{ url_for('static', filename='images/new-cars-model/graduates-1.jpg') }}" alt="Slide 1"
+						class="ab-thumb ab-thumb-active"
+						data-img="{{ url_for('static', filename='images/new-cars-model/graduates-1.jpg') }}">
+					<img src="{{ url_for('static', filename='images/new-cars-model/graduates-2.jpg') }}" alt="Slide 2"
+						class="ab-thumb"
+						data-img="{{ url_for('static', filename='images/new-cars-model/graduates-2.jpg') }}">
+					<img src="{{ url_for('static', filename='images/new-cars-model/interview_man.jpg') }}" alt="Slide 3"
+						class="ab-thumb"
+						data-img="{{ url_for('static', filename='images/new-cars-model/interview_man.jpg') }}">
+					<img src="{{ url_for('static', filename='images/new-cars-model/graduates-3.jpg') }}" alt="Slide 4"
+						class="ab-thumb"
+						data-img="{{ url_for('static', filename='images/new-cars-model/graduates-3.jpg') }}">
+				</div>
+			</div>
+
+			<!-- Text side -->
+			<div class="ab-text-col ab-reveal-right" style="transition-delay:0.15s">
+				<span class="ab-badge">Who We Are</span>
+				<h2 class="ab-title">About <span>Mr. Project</span></h2>
+				<p class="ab-desc">
+					At Mr. Project, we deliver expert academic and professional support to students, researchers,
+					and businesses worldwide. From <strong style="color:#c8a060">Personal Statements</strong> and
+					<strong style="color:#c8a060">CVs</strong> to full
+					<strong style="color:#c8a060">Thesis &amp; Dissertation</strong> writing, essays, data analysis,
+					visualization, and web development — every deliverable is crafted to the highest standard,
+					on time, every time.
+				</p>
+
+				<div class="ab-tags">
+					<span class="ab-tag">Personal Statement</span>
+					<span class="ab-tag">CV &amp; Cover Letter</span>
+					<span class="ab-tag">LinkedIn Profile</span>
+					<span class="ab-tag">Master&rsquo;s Thesis</span>
+					<span class="ab-tag">Undergraduate Thesis</span>
+					<span class="ab-tag">PhD Dissertation</span>
+					<span class="ab-tag">Research Proposal</span>
+					<span class="ab-tag">SIWES Report</span>
+					<span class="ab-tag">Essays &amp; Assignments</span>
+					<span class="ab-tag">Data Analysis</span>
+					<span class="ab-tag">Data Visualization</span>
+					<span class="ab-tag">Web Development</span>
+					<span class="ab-tag">Presentations</span>
+					<span class="ab-tag">Visa Statements</span>
+				</div>
+
+				<ul class="ab-features">
+					<li>Expert Academic Writers</li>
+					<li>On-Time Delivery</li>
+					<li>Plagiarism-Free Work</li>
+					<li>Data Analysis Experts</li>
+					<li>Confidential &amp; Secure</li>
+					<li>24/7 Client Support</li>
+				</ul>
+
+				<a href="{{ url_for('index') }}" class="ab-cta">
+					Get Started <i class="fa fa-arrow-right"></i>
+				</a>
+			</div>
+
+		</div>
+	</section>
+	<!-- ==================== END ABOUT ==================== -->
+
+
+	<!-- ==================== REVIEWS ==================== -->
+	<section id="reviews" class="rv-section" aria-label="Client Reviews">
+
+		<div class="rv-header rv-reveal">
+			<span class="rv-badge">Testimonials</span>
+			<h2>What Clients <span>Say</span></h2>
+			<p>Real words from students and professionals we&rsquo;ve helped succeed.</p>
+		</div>
+
+		<div class="rv-slider-wrap">
+
+			<!-- Overall rating -->
+			<div class="rv-overall rv-reveal" style="transition-delay:0.08s">
+				<div class="rv-rating-big">4.9</div>
+				<div class="rv-rating-info">
+					<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+					<p>Based on 500+ client reviews</p>
+				</div>
+			</div>
+
+			<!-- Slider track -->
+			<div class="rv-track-outer rv-reveal" style="transition-delay:0.16s">
+				<div class="rv-track" id="rv-track">
+
+					<div class="rv-card-wrap">
+						<div class="rv-card">
+							<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+							<p class="rv-text">&ldquo;I got a better mark in my data analysis and visualizations &mdash;
+								thanks so much for your help!&rdquo;</p>
+							<div class="rv-person">
+								<img src="{{ url_for('static', filename='images/clients/female.png') }}" alt="Sammie"
+									class="rv-avatar">
+								<div>
+									<div class="rv-name">Sammie</div>
+									<div class="rv-location">Czech Republic</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="rv-card-wrap">
+						<div class="rv-card">
+							<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+							<p class="rv-text">&ldquo;Thank you so much Mr. Project. You are good at what you do. Mr.
+								Project to the World!&rdquo;</p>
+							<div class="rv-person">
+								<img src="{{ url_for('static', filename='images/clients/female.png') }}"
+									alt="Tasty Buds" class="rv-avatar">
+								<div>
+									<div class="rv-name">Tasty Buds</div>
+									<div class="rv-location">Nigeria</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="rv-card-wrap">
+						<div class="rv-card">
+							<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+							<p class="rv-text">&ldquo;I finished the data analysis course thanks to your help. You are
+								really good at what you do!&rdquo;</p>
+							<div class="rv-person">
+								<img src="{{ url_for('static', filename='images/clients/man.png') }}" alt="John Ken"
+									class="rv-avatar">
+								<div>
+									<div class="rv-name">John Ken</div>
+									<div class="rv-location">Czech Republic</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="rv-card-wrap">
+						<div class="rv-card">
+							<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+							<p class="rv-text">&ldquo;Thank you for the thesis and analysis. You didn&rsquo;t just
+								prepare it &mdash; you explained it to my full understanding.&rdquo;</p>
+							<div class="rv-person">
+								<img src="{{ url_for('static', filename='images/clients/man.png') }}" alt="Percy"
+									class="rv-avatar">
+								<div>
+									<div class="rv-name">Percy</div>
+									<div class="rv-location">Nigeria</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="rv-card-wrap">
+						<div class="rv-card">
+							<div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+							<p class="rv-text">&ldquo;They tried to find fault and couldn&rsquo;t find a single thing.
+								The quality was absolutely outstanding. Blessed!&rdquo;</p>
+							<div class="rv-person">
+								<img src="{{ url_for('static', filename='images/clients/man2.png') }}" alt="Samuel Ayo"
+									class="rv-avatar">
+								<div>
+									<div class="rv-name">Samuel Ayo</div>
+									<div class="rv-location">Nigeria</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Ghost card: fills 3-column row on desktop -->
+					<div class="rv-card-wrap rv-ghost" aria-hidden="true"
+						style="visibility:hidden;pointer-events:none;">
+						<div class="rv-card"></div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Navigation -->
+			<div class="rv-nav rv-reveal" style="transition-delay:0.24s">
+				<button class="rv-btn" id="rv-prev" aria-label="Previous reviews"><i
+						class="fa fa-angle-left"></i></button>
+				<div class="rv-dots" id="rv-dots"></div>
+				<button class="rv-btn" id="rv-next" aria-label="Next reviews"><i class="fa fa-angle-right"></i></button>
+			</div>
+
+		</div>
+
+	</section>
+	<!-- ==================== END REVIEWS ==================== -->
+
+
+	<!-- ==================== BLOG (coming soon) ==================== -->
+	<section id="blog" class="blog">
+		<p>Incoming blog.</p>
+	</section>
+	<!-- ==================== END BLOG ==================== -->
+
+
+	<!-- ==================== FOOTER / CONTACT ==================== -->
+	<footer id="contact" class="contact" role="contentinfo" aria-label="Contact and footer">
+
+		<!-- Contact bar -->
+		<div class="fp-contact-bar">
+			<div class="fp-contact-item fp-reveal">
+				<div class="fp-contact-icon"><i class="fa fa-envelope-o"></i></div>
+				<div>
+					<span class="fp-contact-label">Email Us</span>
+					<a href="mailto:mrprojectwriting@gmail.com" class="fp-contact-value">mrprojectwriting@gmail.com</a>
+				</div>
+			</div>
+			<div class="fp-divider"></div>
+			<div class="fp-contact-item fp-reveal" style="transition-delay:0.1s">
+				<div class="fp-contact-icon"><i class="fa fa-phone"></i></div>
+				<div>
+					<span class="fp-contact-label">Call Us</span>
+					<a href="tel:+2348026612882" class="fp-contact-value">+234 802 661 2882</a>
+				</div>
+			</div>
+			<div class="fp-divider"></div>
+			<div class="fp-contact-item fp-reveal" style="transition-delay:0.2s">
+				<div class="fp-contact-icon"><i class="fa fa-clock-o"></i></div>
+				<div>
+					<span class="fp-contact-label">Available</span>
+					<span class="fp-contact-value">Mon &ndash; Sat, 9am &ndash; 9pm WAT</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer body -->
+		<div class="fp-body">
+
+			<!-- Brand -->
+			<div class="fp-col-brand fp-reveal">
+				<a href="{{ url_for('index') }}" class="fp-brand-logo">
+					<span class="fp-brand-name">Mr.<span>Project</span></span>
+				</a>
+				<p class="fp-brand-desc">
+					Transform your academic journey with expert guidance &mdash; delivering high-quality support
+					for students and professionals in academic writing, data analysis and research.
+				</p>
+				<div class="fp-social">
+					<a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+					<a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+					<a href="#" aria-label="Pinterest"><i class="fa fa-pinterest-p"></i></a>
+					<a href="#" aria-label="Behance"><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+
+			<!-- About links -->
+			<div class="fp-col-widget fp-reveal" style="transition-delay:0.1s">
+				<h3 class="fp-widget-title">Mr. Project</h3>
+				<ul class="fp-widget-list">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Get Employed</a></li>
+					<li><a href="/terms">Terms of Service</a></li>
+					<li><a href="/privacy">Privacy Policy</a></li>
+				</ul>
+			</div>
+
+			<!-- Services links -->
+			<div class="fp-col-widget fp-reveal" style="transition-delay:0.2s">
+				<h3 class="fp-widget-title">Our Services</h3>
+				<ul class="fp-widget-list">
+					<li><a href="#">Data Analysis &amp; Visualization</a></li>
+					<li><a href="#">Master&rsquo;s Thesis Writing</a></li>
+					<li><a href="#">Undergraduate Thesis</a></li>
+					<li><a href="#">SIWES Report Writing</a></li>
+					<li><a href="#">Assignment Assistance</a></li>
+				</ul>
+			</div>
+
+			<!-- Newsletter -->
+			<div class="fp-col-newsletter fp-reveal" style="transition-delay:0.3s">
+				<h3 class="fp-widget-title">Newsletter</h3>
+				<p class="fp-newsletter-desc">
+					Subscribe to receive the latest news, service updates and academic resources directly to your inbox.
+				</p>
+				<div class="fp-nl-form">
+					<input type="email" class="fp-nl-input" id="fp-nl-email" placeholder="Your email address"
+						aria-label="Email address" autocomplete="email">
+					<button class="fp-nl-btn" id="fp-nl-submit" type="button" aria-label="Subscribe">
+						<i class="fa fa-arrow-right"></i>
+					</button>
+				</div>
+				<p class="fp-nl-status" id="fp-nl-status" aria-live="polite"></p>
+			</div>
+
+		</div>
+
+		<!-- Bottom bar -->
+		<div class="fp-bottom-bar-wrap">
+			<div class="fp-bottom">
+				<p class="fp-bottom-copy">
+					&copy; <span id="fp-year"></span> Designed &amp; developed by <a href="#">Mr. Project</a>. All
+					rights reserved.
+				</p>
+				<a href="#home" class="fp-back-top" aria-label="Back to top">
+					<i class="fa fa-angle-up"></i>
+				</a>
+			</div>
+		</div>
+
+	</footer>
+	<!-- ==================== END FOOTER ==================== -->
+
+
+	<!-- Floating scroll-to-top button -->
+	<button id="fp-scroll-top-btn" aria-label="Scroll to top" title="Back to top">
+		<i class="fa fa-angle-up"></i>
+	</button>
+
+	<!-- Page scripts (loaded last so full DOM is available) -->
+	<script src="{{ url_for('static', filename='java/firstpage_inline.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block body_class %}page-verify{% endblock %}
+
+{% block title %}Verify Account - MR PROJECT{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center" style="background:linear-gradient(135deg,#b87a00,#f0a500);color:#07111f;">
+                    <h4 class="mb-0" style="font-family:'Rufina',serif;letter-spacing:1px;">
+                        <i class="fas fa-shield-alt me-2"></i>Verify Your Account
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        A verification code has been sent to your email address: <strong>{{ email }}</strong>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('verify', email=email) }}">
+                        {{ form.hidden_tag() }}
+                        <input type="hidden" name="email" value="{{ email }}">
+                        
+                        <div class="mb-4">
+                            {{ form.otp.label(class="form-label") }}
+                            {{ form.otp(class="form-control form-control-lg text-center", placeholder="Enter verification code") }}
+                            {% if form.otp.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.otp.errors %}
+                                        <small>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            {{ form.submit(class="btn btn-primary w-100") }}
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4 text-center">
+                        <p style="color:#b8cfe0;">Didn't receive the code? <a href="{{ url_for('resend_otp', email=email) }}">Resend code</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title" style="color:#f0a500;"><i class="fas fa-shield-alt me-2"></i>Security Information</h5>
+                    <hr>
+                    <p style="color:#b8cfe0;">We use two-factor authentication to protect your account. This extra layer of security helps ensure that only you can access your account, even if someone else knows your password.</p>
+                    <p style="color:#b8cfe0;">The verification code is valid for 10 minutes. If you don't verify within this time, you'll need to request a new code.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

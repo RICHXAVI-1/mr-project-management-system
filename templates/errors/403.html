@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Access Denied - MR PROJECT{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h1 class="display-1 text-muted">403</h1>
+                    <h2 class="mb-4">Access Denied</h2>
+                    <p class="mb-4">Sorry, you don't have permission to access this page.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">
+                        <i class="fas fa-home me-2"></i> Return to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

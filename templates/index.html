@@ -1,0 +1,842 @@
+{% extends 'base.html' %}
+
+{% block body_class %}page-index{% endblock %}
+
+{% block title %}MR PROJECT - Quality Academic Writing and Data Analysis{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h1 class="display-4 fw-bold mb-4">Quality Academic Writing and Data Analysis Services</h1>
+            <p class="lead mb-4">We provide professional Data Analysis and academic writing assistance for theses,
+                dissertations, and research projects.</p>
+            <div class="d-grid gap-2 d-md-flex">
+                {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary btn-lg">Admin Dashboard</a>
+                {% else %}
+                <a href="{{ url_for('client_dashboard') }}" class="btn btn-primary btn-lg">My Dashboard</a>
+                {% endif %}
+                {% else %}
+                <a href="{{ url_for('signup') }}" class="btn btn-primary btn-lg">Sign Up</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6 mt-5 mt-md-0 text-center">
+            <div class="card border-0 bg-transparent">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename='images/brand/Mrproject_logo.png') }}" alt="Mr Project Logo"
+                        class="mrp-hero-logo"
+                        style="width:280px;height:280px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(255,215,0,0.7));margin-bottom:1rem;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1), filter 0.4s ease;cursor:pointer;display:inline-block;">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_inline.css') }}">
+                    <h3 class="mt-4">Expert Academic Support</h3>
+                    <p class="text-muted">Professional assistance for all your academic writing needs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold">Our Services</h2>
+            <p class="lead">We assist with personal statements, CV writing, data analysis, and all types of academic
+                writing</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-database fa-3x text-success mb-3"></i>
+                    <h4>Data Analysis</h4>
+                    <p class="text-muted">Expert assistance in perfecting data analysis</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-alt fa-3x text-white mb-3"></i>
+                    <h4>Research Papers</h4>
+                    <p class="text-muted">Well-researched papers with proper citations and references</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h4>Theses & Dissertations</h4>
+                    <p class="text-muted">Comprehensive support for undergraduate and graduate level research</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-edit fa-3x text-warning mb-3"></i>
+                    <h4>Editing &amp; Proofreading</h4>
+                    <p class="text-muted">Polishing your work to meet high academic standards</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-tie fa-3x text-info mb-3"></i>
+                    <h4>Personal Statement Writing</h4>
+                    <p class="text-muted">Compelling statements for academic, job and visa applications — from $19</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-id-card fa-3x text-success mb-3"></i>
+                    <h4>CV / Resume Writing</h4>
+                    <p class="text-muted">Professional CVs tailored to your career level — from $19</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-bar fa-3x text-danger mb-3"></i>
+                    <h4>Data Visualization</h4>
+                    <p class="text-muted">Dashboards, charts and infographics (Power BI, Tableau, Python) — from $20</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                    <h4>Web Development</h4>
+                    <p class="text-muted">Landing pages, multi-page sites and web apps — from $60</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-4">
+        <div class="col-12 text-center mb-3">
+            <span class="badge text-uppercase py-2 px-3 mb-3"
+                style="background:transparent;border:1px solid #f0a500;color:#f0a500;letter-spacing:3px;font-size:10.5px;">Professional
+                Services</span>
+            <h2 class="fw-bold">Service <span style="color:#f0a500;">Pricing</span></h2>
+            <p class="text-muted">All prices in USD. Standard = 5–7 days | Express = 2–3 days | Urgent = 24 hrs.</p>
+        </div>
+
+        <!-- Tab Nav -->
+        <div class="col-12">
+            <ul class="nav nav-pills justify-content-center flex-wrap gap-2 mb-4" id="pricingTabs" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
+                        data-bs-target="#pt-ps">Personal Statement</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pt-cv">CV &amp;
+                        Cover Letter</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pt-ac">Academic
+                        Writing</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pt-da">Data
+                        Services</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pt-ot">Other
+                        Services</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pt-ao">Add-Ons
+                        &amp; Info</button></li>
+            </ul>
+        </div>
+
+        <div class="col-12 tab-content" id="pricingTabContent">
+
+            <!-- PERSONAL STATEMENT -->
+            <div class="tab-pane fade show active" id="pt-ps">
+                <h6 class="text-warning text-uppercase fw-bold letter-spacing-2 mb-3">Academic Applications</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Undergraduate / UCAS</td>
+                                <td>$23</td>
+                                <td class="text-warning fw-bold">$33</td>
+                                <td class="text-danger fw-bold">$42</td>
+                            </tr>
+                            <tr>
+                                <td>Postgraduate / Masters</td>
+                                <td>$33</td>
+                                <td class="text-warning fw-bold">$42</td>
+                                <td class="text-danger fw-bold">$56</td>
+                            </tr>
+                            <tr>
+                                <td>PhD / Doctoral</td>
+                                <td>$47</td>
+                                <td class="text-warning fw-bold">$61</td>
+                                <td class="text-danger fw-bold">$75</td>
+                            </tr>
+                            <tr>
+                                <td>Oxbridge / Russell Group</td>
+                                <td>$56</td>
+                                <td class="text-warning fw-bold">$70</td>
+                                <td class="text-danger fw-bold">$89</td>
+                            </tr>
+                            <tr>
+                                <td>Medicine / Law / Dentistry</td>
+                                <td>$61</td>
+                                <td class="text-warning fw-bold">$75</td>
+                                <td class="text-danger fw-bold">$94</td>
+                            </tr>
+                            <tr>
+                                <td>Scholarship Application</td>
+                                <td>$38</td>
+                                <td class="text-warning fw-bold">$52</td>
+                                <td class="text-danger fw-bold">$66</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Professional / Job Applications</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Entry-Level Role</td>
+                                <td>$19</td>
+                                <td class="text-warning fw-bold">$28</td>
+                                <td class="text-danger fw-bold">$38</td>
+                            </tr>
+                            <tr>
+                                <td>Mid-Level / Managerial</td>
+                                <td>$33</td>
+                                <td class="text-warning fw-bold">$45</td>
+                                <td class="text-danger fw-bold">$56</td>
+                            </tr>
+                            <tr>
+                                <td>Senior / Director Level</td>
+                                <td>$52</td>
+                                <td class="text-warning fw-bold">$66</td>
+                                <td class="text-danger fw-bold">$84</td>
+                            </tr>
+                            <tr>
+                                <td>Executive / C-Suite</td>
+                                <td>$70</td>
+                                <td class="text-warning fw-bold">$89</td>
+                                <td class="text-danger fw-bold">$112</td>
+                            </tr>
+                            <tr>
+                                <td>Civil Service Application</td>
+                                <td>$38</td>
+                                <td class="text-warning fw-bold">$52</td>
+                                <td class="text-danger fw-bold">$66</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Visa &amp; Immigration Statements</h6>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Student Visa Statement</td>
+                                <td>$28</td>
+                                <td class="text-warning fw-bold">$39</td>
+                                <td class="text-danger fw-bold">$52</td>
+                            </tr>
+                            <tr>
+                                <td>Work Visa Statement</td>
+                                <td>$33</td>
+                                <td class="text-warning fw-bold">$45</td>
+                                <td class="text-danger fw-bold">$56</td>
+                            </tr>
+                            <tr>
+                                <td>Skilled Worker / ILR</td>
+                                <td>$42</td>
+                                <td class="text-warning fw-bold">$56</td>
+                                <td class="text-danger fw-bold">$70</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CV -->
+            <div class="tab-pane fade" id="pt-cv">
+                <h6 class="text-warning text-uppercase fw-bold mb-3">CV / Resume Writing</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Student / Graduate CV</td>
+                                <td>$19</td>
+                                <td class="text-warning fw-bold">$28</td>
+                                <td class="text-danger fw-bold">$38</td>
+                            </tr>
+                            <tr>
+                                <td>Professional CV (Mid-Level)</td>
+                                <td>$28</td>
+                                <td class="text-warning fw-bold">$38</td>
+                                <td class="text-danger fw-bold">$52</td>
+                            </tr>
+                            <tr>
+                                <td>Senior / Executive CV</td>
+                                <td>$42</td>
+                                <td class="text-warning fw-bold">$56</td>
+                                <td class="text-danger fw-bold">$70</td>
+                            </tr>
+                            <tr>
+                                <td>Academic / Research CV</td>
+                                <td>$33</td>
+                                <td class="text-warning fw-bold">$45</td>
+                                <td class="text-danger fw-bold">$59</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Cover Letter &amp; LinkedIn</h6>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th colspan="3" class="text-center">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cover Letter Writing</td>
+                                <td colspan="3" class="text-warning fw-bold text-center">$14 flat rate</td>
+                            </tr>
+                            <tr>
+                                <td>LinkedIn Profile Rewrite</td>
+                                <td colspan="3" class="text-warning fw-bold text-center">$17 flat rate</td>
+                            </tr>
+                            <tr>
+                                <td>CV + Cover Letter Bundle</td>
+                                <td colspan="3" class="text-success fw-bold text-center">15% discount applied</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ACADEMIC -->
+            <div class="tab-pane fade" id="pt-ac">
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Thesis &amp; Dissertation</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Undergraduate Thesis / Final Year Project</td>
+                                <td>$100</td>
+                                <td class="text-warning fw-bold">$125</td>
+                                <td class="text-danger fw-bold">$150</td>
+                            </tr>
+                            <tr>
+                                <td>Master's Thesis / Dissertation</td>
+                                <td>$150</td>
+                                <td class="text-warning fw-bold">$175</td>
+                                <td class="text-danger fw-bold">$200</td>
+                            </tr>
+                            <tr>
+                                <td>PhD Dissertation Chapter</td>
+                                <td>$200</td>
+                                <td class="text-warning fw-bold">$240</td>
+                                <td class="text-danger fw-bold">$280</td>
+                            </tr>
+                            <tr>
+                                <td>Research Proposal</td>
+                                <td>$70</td>
+                                <td class="text-warning fw-bold">$100</td>
+                                <td class="text-danger fw-bold">$120</td>
+                            </tr>
+                            <tr>
+                                <td>Literature Review</td>
+                                <td>$70</td>
+                                <td class="text-warning fw-bold">$100</td>
+                                <td class="text-danger fw-bold">$120</td>
+                            </tr>
+                            <tr>
+                                <td>SIWES / IT Industrial Report</td>
+                                <td>$50</td>
+                                <td class="text-warning fw-bold">$60</td>
+                                <td class="text-danger fw-bold">$80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Essays &amp; Assignments</h6>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Short Essay (up to 1,500 words)</td>
+                                <td>$15</td>
+                                <td class="text-warning fw-bold">$22</td>
+                                <td class="text-danger fw-bold">$30</td>
+                            </tr>
+                            <tr>
+                                <td>Standard Assignment (1,500–3,000 words)</td>
+                                <td>$25</td>
+                                <td class="text-warning fw-bold">$35</td>
+                                <td class="text-danger fw-bold">$48</td>
+                            </tr>
+                            <tr>
+                                <td>Extended Assignment (3,000–5,000 words)</td>
+                                <td>$40</td>
+                                <td class="text-warning fw-bold">$55</td>
+                                <td class="text-danger fw-bold">$72</td>
+                            </tr>
+                            <tr>
+                                <td>Case Study / Academic Report</td>
+                                <td>$32</td>
+                                <td class="text-warning fw-bold">$44</td>
+                                <td class="text-danger fw-bold">$58</td>
+                            </tr>
+                            <tr>
+                                <td>Proofreading / Editing Only</td>
+                                <td colspan="3" class="text-warning fw-bold text-center">$9 per 1,000 words</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DATA -->
+            <div class="tab-pane fade" id="pt-da">
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Data Analysis</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Basic Statistical Analysis (SPSS / Excel)</td>
+                                <td>$35</td>
+                                <td class="text-warning fw-bold">$50</td>
+                                <td class="text-danger fw-bold">$70</td>
+                            </tr>
+                            <tr>
+                                <td>Advanced Analysis (R / Python)</td>
+                                <td>$60</td>
+                                <td class="text-warning fw-bold">$80</td>
+                                <td class="text-danger fw-bold">$110</td>
+                            </tr>
+                            <tr>
+                                <td>Qualitative Analysis (NVivo / Thematic)</td>
+                                <td>$50</td>
+                                <td class="text-warning fw-bold">$68</td>
+                                <td class="text-danger fw-bold">$90</td>
+                            </tr>
+                            <tr>
+                                <td>Survey Design &amp; Analysis</td>
+                                <td>$40</td>
+                                <td class="text-warning fw-bold">$55</td>
+                                <td class="text-danger fw-bold">$75</td>
+                            </tr>
+                            <tr>
+                                <td>Regression / Econometric Modelling</td>
+                                <td>$65</td>
+                                <td class="text-warning fw-bold">$85</td>
+                                <td class="text-danger fw-bold">$115</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Data Visualization</h6>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Charts &amp; Graphs (Excel / Google Sheets)</td>
+                                <td>$20</td>
+                                <td class="text-warning fw-bold">$30</td>
+                                <td class="text-danger fw-bold">$42</td>
+                            </tr>
+                            <tr>
+                                <td>Interactive Dashboard (Power BI / Tableau)</td>
+                                <td>$55</td>
+                                <td class="text-warning fw-bold">$72</td>
+                                <td class="text-danger fw-bold">$95</td>
+                            </tr>
+                            <tr>
+                                <td>Python / R Plots (Matplotlib, ggplot)</td>
+                                <td>$40</td>
+                                <td class="text-warning fw-bold">$55</td>
+                                <td class="text-danger fw-bold">$72</td>
+                            </tr>
+                            <tr>
+                                <td>Infographic Design</td>
+                                <td>$35</td>
+                                <td class="text-warning fw-bold">$48</td>
+                                <td class="text-danger fw-bold">$65</td>
+                            </tr>
+                            <tr>
+                                <td>Full Report with Visualizations</td>
+                                <td>$75</td>
+                                <td class="text-warning fw-bold">$100</td>
+                                <td class="text-danger fw-bold">$135</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- OTHER -->
+            <div class="tab-pane fade" id="pt-ot">
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Web Development</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Landing Page / Single-Page Site</td>
+                                <td>$60</td>
+                                <td class="text-warning fw-bold">$80</td>
+                                <td class="text-danger fw-bold">$110</td>
+                            </tr>
+                            <tr>
+                                <td>Multi-Page Website (up to 5 pages)</td>
+                                <td>$120</td>
+                                <td class="text-warning fw-bold">$155</td>
+                                <td class="text-danger fw-bold">$200</td>
+                            </tr>
+                            <tr>
+                                <td>Web App (database + authentication)</td>
+                                <td>$180</td>
+                                <td class="text-warning fw-bold">$230</td>
+                                <td class="text-danger fw-bold">$300</td>
+                            </tr>
+                            <tr>
+                                <td>Bug Fixing / Code Review</td>
+                                <td colspan="3" class="text-warning fw-bold text-center">From $20 — quote-based</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Presentations &amp; Proposals</h6>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Standard</th>
+                                <th class="text-warning">Express</th>
+                                <th class="text-danger">Urgent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PowerPoint Presentation (up to 15 slides)</td>
+                                <td>$25</td>
+                                <td class="text-warning fw-bold">$35</td>
+                                <td class="text-danger fw-bold">$48</td>
+                            </tr>
+                            <tr>
+                                <td>Business Proposal / Report</td>
+                                <td>$45</td>
+                                <td class="text-warning fw-bold">$60</td>
+                                <td class="text-danger fw-bold">$80</td>
+                            </tr>
+                            <tr>
+                                <td>Grant / Funding Application</td>
+                                <td>$55</td>
+                                <td class="text-warning fw-bold">$72</td>
+                                <td class="text-danger fw-bold">$95</td>
+                            </tr>
+                            <tr>
+                                <td>Technical Report Writing</td>
+                                <td>$40</td>
+                                <td class="text-warning fw-bold">$55</td>
+                                <td class="text-danger fw-bold">$72</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ADD-ONS -->
+            <div class="tab-pane fade" id="pt-ao">
+                <h6 class="text-warning text-uppercase fw-bold mb-3">Add-On Services</h6>
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">CV / Resume Writing</span><strong
+                                    class="text-warning ms-2">$19</strong></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">Cover Letter</span><strong class="text-warning ms-2">$14</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">LinkedIn Rewrite</span><strong class="text-warning ms-2">$17</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">Extra Revision Round</span><strong
+                                    class="text-warning ms-2">$8</strong></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">2nd Statement (same client)</span><strong
+                                    class="text-success ms-2">25% OFF</strong></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">Proofreading / Editing</span><strong
+                                    class="text-warning ms-2">$9</strong></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">Plagiarism Report</span><strong class="text-warning ms-2">$5</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body d-flex justify-content-between align-items-center"><span
+                                    class="small">Turnitin Report</span><strong class="text-warning ms-2">$8</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-warning bg-opacity-10 border-warning mb-3">
+                    <h6 class="text-warning fw-bold text-uppercase mb-2">Every Package Includes</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Detailed client questionnaire</li>
+                                <li><i class="fas fa-check text-success me-2"></i>100% original, tailored content</li>
+                                <li><i class="fas fa-check text-success me-2"></i>British English spelling &amp; format
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Two rounds of free revisions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Delivered as PDF + Word doc</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Strict confidentiality guaranteed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-success bg-opacity-10 border-success">
+                    <h6 class="text-success fw-bold text-uppercase mb-2">Payment Terms</h6>
+                    <ul class="list-unstyled mb-0 small">
+                        <li><i class="fas fa-circle text-success me-2" style="font-size:8px"></i>50% deposit required
+                            before work begins</li>
+                        <li><i class="fas fa-circle text-success me-2" style="font-size:8px"></i>50% balance due on
+                            final delivery</li>
+                        <li><i class="fas fa-circle text-success me-2" style="font-size:8px"></i>Payment via bank
+                            transfer</li>
+                        <li><i class="fas fa-circle text-success me-2" style="font-size:8px"></i>Pound Sterling (£)
+                            pricing available on request</li>
+                    </ul>
+                </div>
+                <p class="text-muted small text-center mt-3">
+                    Prices in <strong class="text-warning">USD</strong>. All work written from scratch — never resold or
+                    reused.
+                    For bulk / corporate packages, <strong class="text-warning">discounts are available</strong> —
+                    contact us to discuss.
+                </p>
+            </div>
+
+        </div><!-- /tab-content -->
+    </div><!-- /row -->
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold">How It Works</h2>
+            <p class="lead">Simple process to with our services</p>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-white d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px;">
+                        <h3 class="text-black mb-0">1</h3>
+                    </div>
+                    <h5>Contact Us</h5>
+                    <p class="small text-muted">Reach out via WhatsApp or email to discuss your project</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px;">
+                        <h3 class="text-white mb-0">2</h3>
+                    </div>
+                    <h5>Get Approval Code</h5>
+                    <p class="small text-muted">Receive your unique approval code for registration</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-warning d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px;">
+                        <h3 class="text-white mb-0">3</h3>
+                    </div>
+                    <h5>Create Account</h5>
+                    <p class="small text-muted">Sign up using your approval code and project details</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-success d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px;">
+                        <h3 class="text-white mb-0">4</h3>
+                    </div>
+                    <h5>Track Progress</h5>
+                    <p class="small text-muted">Monitor your project status and exchange documents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Contact Us</h4>
+                </div>
+                <div class="card-body">
+                    <p class="mb-4">Need more information or ready to get started? Reach out to us:</p>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rounded-circle bg-primary p-3 me-3">
+                            <i class="fab fa-whatsapp fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">WhatsApp</h5>
+                            <a href="https://wa.me/2348026612882" target="_blank"
+                                class="text-decoration-none">+2348026612882</a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rounded-circle bg-primary p-3 me-3">
+                            <i class="fas fa-envelope fa-lg text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">Email</h5>
+                            <a href="mailto:mrprojectwriting@gmail.com"
+                                class="text-decoration-none">mrprojectwriting@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info bg-danger mt-4">
+                        <i class="fas fa-info-circle text-white me-2"></i>
+                        <span class="mb-0 text-white">You'll need an approval code to sign up. Please contact us to get
+                            started.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

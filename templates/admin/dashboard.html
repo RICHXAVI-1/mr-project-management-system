@@ -1,0 +1,177 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Admin Dashboard - MR PROJECT{% endblock %}
+
+{% block admin_title %}Dashboard{% endblock %}
+
+{% block admin_content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card border-primary">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-primary p-3 me-3">
+                    <i class="fas fa-users fa-2x text-white"></i>
+                </div>
+                <div>
+                    <h2 class="mb-0">{{ client_count }}</h2>
+                    <p class="text-muted mb-0">Total Clients</p>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('admin_clients') }}" class="text-decoration-none">View All Clients <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card border-success">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-success p-3 me-3">
+                    <i class="fas fa-file-alt fa-2x text-white"></i>
+                </div>
+                <div>
+                    <h2 class="mb-0">{{ document_count }}</h2>
+                    <p class="text-muted mb-0">Total Documents</p>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('admin_documents') }}" class="text-decoration-none">View All Documents <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card border-info">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-info p-3 me-3">
+                    <i class="fas fa-envelope fa-2x text-white"></i>
+                </div>
+                <div>
+                    <h2 class="mb-0">{{ unread_messages }}</h2>
+                    <p class="text-muted mb-0">Unread Messages</p>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('admin_messages') }}" class="text-decoration-none">View All Messages <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Recent Clients</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Topic</th>
+                                <th>Date Joined</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for client in recent_clients %}
+                            <tr>
+                                <td>{{ client.name }}</td>
+                                <td>{{ client.topic_title|truncate(30) }}</td>
+                                <td>{{ client.created_at.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    <a href="{{ url_for('admin_view_client', client_id=client.id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center">No clients yet</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('admin_clients') }}" class="text-decoration-none">View All Clients <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Recent Documents</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th>Client</th>
+                                <th>Upload Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for document in recent_documents %}
+                            <tr>
+                                <td>{{ document.filename|truncate(20) }}</td>
+                                <td>{{ document.user.name }}</td>
+                                <td>{{ document.uploaded_at.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    <a href="{{ url_for('download_document', document_id=document.id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center">No documents yet</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('admin_documents') }}" class="text-decoration-none">View All Documents <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 text-light">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <a href="{{ url_for('admin_clients') }}" class="btn btn-outline-primary d-block">
+                            <i class="fas fa-user-plus me-2"></i> Generate Approval Code
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{{ url_for('admin_documents') }}" class="btn btn-outline-success d-block">
+                            <i class="fas fa-file-upload me-2"></i> Upload Document
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="{{ url_for('admin_messages') }}" class="btn btn-outline-info d-block">
+                            <i class="fas fa-envelope me-2"></i> Send Group Message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
